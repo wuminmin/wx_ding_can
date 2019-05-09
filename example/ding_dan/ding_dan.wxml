@@ -26,6 +26,40 @@
     </view>
   </view>
 
+    <view class="page__bd">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">早餐预定数量</view>
+          <view class="weui-form-preview__value_in-hd">{{zao_can_shu_liang}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">价格</view>
+          <view class="weui-form-preview__value_in-hd">¥{{zao_can_jia_ge}}.00</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+       <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">签到情况</view>
+          <view class="weui-form-preview__value">{{zao_can_qian_dao}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">订餐时间</view>
+          <view class="weui-form-preview__value">{{zao_can_ding_can_shi_jian}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">取消时间</view>
+          <view class="weui-form-preview__value">{{zao_can_qu_xiao_shi_jian}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+        <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="qu_xiao_zao_can">取消早餐</button>
+      </view>
+    </view>
+  </view>
+
   <view class="page__bd">
     <view class="weui-form-preview">
       <view class="weui-form-preview__hd">

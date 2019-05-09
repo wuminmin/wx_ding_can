@@ -23,6 +23,12 @@ Page({
     end_date: "",
     time: "12:01",
 
+    zao_can_shu_liang: '',
+    zao_can_jia_ge: '',
+    zao_can_qian_dao: '',
+    zao_can_ding_can_shi_jian: '',
+    zao_can_qu_xiao_shi_jian: '',
+
     zhong_can_shu_liang: '',
     zhong_can_jia_ge: '',
     zhong_can_qian_dao: '',
@@ -37,6 +43,7 @@ Page({
 
     hiddenmodalput: true,
     modal_tittle: '取消订餐',
+    qu_xiao_zao_can_flag: false,
     qu_xiao_zhong_can_flag: false,
     qu_xiao_wan_can_flag: false,
 
@@ -76,6 +83,12 @@ Page({
                   // start_date: result.data.开始日期,
                   // end_date: result.data.结束日期,
 
+                  zao_can_shu_liang: result.data.早餐食堂就餐预订数,
+                  zao_can_jia_ge: result.data.早餐价格,
+                  zao_can_qian_dao: result.data.早餐食堂就餐签到,
+                  zao_can_ding_can_shi_jian: result.data.早餐订餐时间,
+                  zao_can_qu_xiao_shi_jian: result.data.早餐取消时间,
+
                   zhong_can_shu_liang: result.data.中餐食堂就餐预订数,
                   zhong_can_jia_ge: result.data.中餐价格,
                   zhong_can_qian_dao: result.data.中餐食堂就餐签到,
@@ -93,6 +106,12 @@ Page({
                 that.setData({
                   showTopTips_fail_txt: result.data.描述,
                   showTopTips_fail: true,
+
+                  zao_can_shu_liang: '',
+                  zao_can_jia_ge: '',
+                  zao_can_qian_dao: '',
+                  zao_can_ding_can_shi_jian: '',
+                  zao_can_qu_xiao_shi_jian: '',
 
                   zhong_can_shu_liang: '',
                   zhong_can_jia_ge: '',
@@ -131,6 +150,16 @@ Page({
     });
   },
 
+  qu_xiao_zao_can: function () {
+    this.setData({
+      hiddenmodalput: false,
+      modal_tittle: '取消早餐',
+      qu_xiao_zao_can_flag: true,
+    })
+    console.log(this.data.qu_xiao_zhong_can_flag)
+
+  },
+
   qu_xiao_zhong_can: function() {
     this.setData({
       hiddenmodalput: false,
@@ -140,6 +169,7 @@ Page({
     console.log(this.data.qu_xiao_zhong_can_flag)
 
   },
+
   qu_xiao_wan_can: function(options) {
     this.setData({
       hiddenmodalput: false,
@@ -165,17 +195,24 @@ Page({
               name: that.data.name,
               page_name: that.data.page_name,
               page_desc: that.data.page_desc,
+              qu_xiao_zao_can_flag: that.data.qu_xiao_zao_can_flag,
               qu_xiao_zhong_can_flag: that.data.qu_xiao_zhong_can_flag,
               qu_xiao_wan_can_flag: that.data.qu_xiao_wan_can_flag,
             },
             success: function(result) {
-              if (result.data.描述 == "中餐取消成功" || result.data.描述 == "晚餐取消成功") {
+              if (result.data.描述 == "早餐取消成功" ||result.data.描述 == "中餐取消成功" || result.data.描述 == "晚餐取消成功") {
                 that.setData({
                   hiddenmodalput:true,
                   showTopTips_normal_txt: result.data.描述,
                   showTopTips_normal: true,
                   qu_xiao_zhong_can_flag: false,
                   qu_xiao_wan_can_flag: false,
+
+                  zao_can_shu_liang: result.data.早餐食堂就餐预订数,
+                  zao_can_jia_ge: result.data.早餐价格,
+                  zao_can_qian_dao: result.data.早餐食堂就餐签到,
+                  zao_can_ding_can_shi_jian: result.data.早餐订餐时间,
+                  zao_can_qu_xiao_shi_jian: result.data.早餐取消时间,
 
                   zhong_can_shu_liang: result.data.中餐食堂就餐预订数,
                   zhong_can_jia_ge: result.data.中餐价格,
@@ -202,6 +239,12 @@ Page({
                   showTopTips_fail: true,
                   qu_xiao_zhong_can_flag: false,
                   qu_xiao_wan_can_flag: false,
+
+                  zao_can_shu_liang: result.data.早餐食堂就餐预订数,
+                  zao_can_jia_ge: result.data.早餐价格,
+                  zao_can_qian_dao: result.data.早餐食堂就餐签到,
+                  zao_can_ding_can_shi_jian: result.data.早餐订餐时间,
+                  zao_can_qu_xiao_shi_jian: result.data.早餐取消时间,
 
                   zhong_can_shu_liang: result.data.中餐食堂就餐预订数,
                   zhong_can_jia_ge: result.data.中餐价格,
@@ -246,6 +289,7 @@ Page({
     // if (this.data.qu_xiao_zhong_can_flag) {
       this.setData({
         hiddenmodalput: true,
+        qu_xiao_zao_can_flag: false,
         qu_xiao_zhong_can_flag: false,
         qu_xiao_wan_can_flag: false,
       })
@@ -293,6 +337,12 @@ Page({
                   date: result.data.日期,
                   start_date: result.data.开始日期,
                   end_date: result.data.结束日期,
+
+                  zao_can_shu_liang: result.data.早餐食堂就餐预订数,
+                  zao_can_jia_ge: result.data.早餐价格,
+                  zao_can_qian_dao: result.data.早餐食堂就餐签到,
+                  zao_can_ding_can_shi_jian: result.data.早餐订餐时间,
+                  zao_can_qu_xiao_shi_jian: result.data.早餐取消时间,
 
                   zhong_can_shu_liang: result.data.中餐食堂就餐预订数,
                   zhong_can_jia_ge: result.data.中餐价格,

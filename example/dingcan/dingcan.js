@@ -22,10 +22,10 @@ Page({
     countryCodeIndex: 0,
 
     countries: ["无", "预定1份"],
-    countryIndex: 1,
+    countryIndex: 0,
 
     accounts: ["无", "预定1份"],
-    zhong_can_shi_tang: 1,
+    zhong_can_shi_tang: 0,
 
     accounts2: ["无", "预定1份"],
     wan_can_shi_tang: 0,
@@ -64,6 +64,7 @@ Page({
                   date: result.data.用餐日期,
                   start_date: result.data.预订开始日期,
                   end_date: result.data.预订结束日期,
+                  countries: result.data.countries,
                   accounts: result.data.accounts,
                   accounts2: result.data.accounts2,
                 });
@@ -109,6 +110,7 @@ Page({
               url: app.globalData.global_url +'send_ding_can_data/',
               data: {
                 code: res.code,
+                countryIndex: that.data.countryIndex,
                 zhong_can_shi_tang: that.data.zhong_can_shi_tang,
                 wan_can_shi_tang: that.data.wan_can_shi_tang,
                 zhong_can_wai_dai: that.data.zhong_can_wai_dai,
@@ -190,14 +192,14 @@ Page({
       countryCodeIndex: e.detail.value
     })
   },
-  bindCountryChange: function (e) {
+  bindAccountChange0: function (e) {
     console.log('picker country 发生选择改变，携带值为', e.detail.value);
 
     this.setData({
       countryIndex: e.detail.value
     })
   },
-  bindAccountChange: function (e) {
+  bindAccountChange1: function (e) {
     console.log('zhong_can_shi_tang 发生选择改变，携带值为', e.detail.value);
 
     this.setData({

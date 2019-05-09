@@ -21,11 +21,21 @@
         </view>
       </view>
     </view>
+    <view class="weui-cells__title">预定早餐食堂就餐</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">
+          <picker bindchange="bindAccountChange0" value="{{countryIndex}}" range="{{countries}}">
+            <view class="weui-select">{{countries[countryIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
     <view class="weui-cells__title">预定中餐食堂就餐</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__bd">
-          <picker bindchange="bindAccountChange" value="{{zhong_can_shi_tang}}" range="{{accounts}}">
+          <picker bindchange="bindAccountChange1" value="{{zhong_can_shi_tang}}" range="{{accounts}}">
             <view class="weui-select">{{accounts[zhong_can_shi_tang]}}</view>
           </picker>
         </view>
@@ -45,7 +55,7 @@
 
 
 
-        <!-- <view class="weui-cells__title">预定外带</view>
+    <!-- <view class="weui-cells__title">预定外带</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">

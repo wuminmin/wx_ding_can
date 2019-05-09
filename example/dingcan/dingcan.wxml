@@ -1,0 +1,87 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__hd">
+    <view class="page__title">{{page_name}}</view>
+    <view class="page__desc red-color">{{page_desc}}</view>
+    <view class="page__desc">{{shi_tang_di_zhi}}</view>
+    <view class="page__desc">{{ding_can_jie_guo}}</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">请勾选“阅读并同意”</view>
+    <view class="weui-toptips weui-toptips_normal" wx:if="{{showTopTips_normal}}">{{showTopTips_normal_txt}}</view>
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips_fail}}">{{showTopTips_fail_txt}}</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{date}}" start="{{start_date}}" end="{{end_date}}" bindchange="bindDateChange">
+            <view class="weui-input">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">预定中餐食堂就餐</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">
+          <picker bindchange="bindAccountChange" value="{{zhong_can_shi_tang}}" range="{{accounts}}">
+            <view class="weui-select">{{accounts[zhong_can_shi_tang]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">预定晚餐食堂就餐</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">
+          <picker bindchange="bindAccountChange2" value="{{wan_can_shi_tang}}" range="{{accounts2}}">
+            <view class="weui-select">{{accounts2[wan_can_shi_tang]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+
+
+        <!-- <view class="weui-cells__title">预定外带</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">中餐份数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" bindinput='watch_zhong_can' type='number' value='{{zhong_can_wai_dai}}' />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">晚餐份数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" bindinput='watch_wan_can' type='number' value='{{wan_can_wai_dai}}' />
+        </view>
+      </view>
+
+     
+    </view> -->
+
+    <checkbox-group bindchange="bindAgreeChange">
+      <label class="weui-agree" for="weuiAgree">
+        <view class="weui-agree__text">
+          <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+          <view class="weui-agree__checkbox-icon">
+            <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+          </view>
+          阅读并同意
+          <navigator url="" class="weui-agree__link">《相关条款》</navigator>
+        </view>
+      </label>
+    </checkbox-group>
+
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+    </view>
+  </view>
+</view>

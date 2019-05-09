@@ -1,0 +1,38 @@
+<view class="weui-toptips weui-toptips_normal" wx:if="{{showTopTips_normal}}">{{showTopTips_normal_txt}}</view>
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips_fail}}">{{showTopTips_fail_txt}}</view>
+<view class="weui-panel__bd">
+  <view url="" wx:for="{{ping_jia_list}}" wx:key="ping_jia_id" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+      <image class="weui-media-box__thumb"  mode="aspectFit" src="{{item.image_url}}" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">{{item.biao_ti}}</view>
+      <view class="weui-media-box__desc">{{item.nei_rong}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">文字评价</view>
+<view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindchange="bindChange1" value="{{ping_jia_txt}}" class="weui-input" placeholder="请输入文本" />
+                </view>
+            </view>
+        </view>
+<!-- <view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea bindchange="bindChange1" value="{{ping_jia_txt}}" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em"  />
+      <view class="weui-textarea-counter">0/200</view>
+    </view>
+  </view>
+</view> -->
+<view class="weui-cells__title">图片评价</view>
+<view class="weui-cells weui-cells_after-title">
+  <image mode="aspectFit" src="{{src}}"></image>
+  <button type="normal" bindtap="takePhoto">拍照</button>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+</view>

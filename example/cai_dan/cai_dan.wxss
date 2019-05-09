@@ -1,0 +1,45 @@
+.placeholder_grey{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #708090;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #EBEBEB;
+}
+.placeholder_red{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #a10303;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #EBEBEB;
+}
+.placeholder_green{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #027e0c;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #EBEBEB;
+}
+.placeholder_blue{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #0532c5;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #EBEBEB;
+}
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #ff0b0b;
+}

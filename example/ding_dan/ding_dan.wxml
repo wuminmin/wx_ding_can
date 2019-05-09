@@ -1,0 +1,96 @@
+<modal hidden="{{hiddenmodalput}}" title="{{modal_tittle}}" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+</modal>
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">请勾选“确定交卷并已阅读</view>
+<view class="weui-toptips weui-toptips_normal" wx:if="{{showTopTips_normal}}">{{showTopTips_normal_txt}}</view>
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips_fail}}">{{showTopTips_fail_txt}}</view>
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">{{page_name}}</view>
+    <view class="page__desc">{{page_desc}}</view>
+    <view class="page__desc">{{xing_ming}}</view>
+    <view class="page__desc">{{shi_tang_di_zhi}}</view>
+  </view>
+
+  <view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{date}}" start="{{start_date}}" end="{{end_date}}" bindchange="bindDateChange">
+            <view class="weui-input">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page__bd">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">中餐预定数量</view>
+          <view class="weui-form-preview__value_in-hd">{{zhong_can_shu_liang}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">价格</view>
+          <view class="weui-form-preview__value_in-hd">¥{{zhong_can_jia_ge}}.00</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+       <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">签到情况</view>
+          <view class="weui-form-preview__value">{{zhong_can_qian_dao}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">订餐时间</view>
+          <view class="weui-form-preview__value">{{zhong_can_ding_can_shi_jian}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">取消时间</view>
+          <view class="weui-form-preview__value">{{zhong_can_qu_xiao_shi_jian}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+        <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="qu_xiao_zhong_can">取消中餐</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="page__bd">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">晚餐预定数量</view>
+          <view class="weui-form-preview__value_in-hd">{{wan_can_shu_liang}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">价格</view>
+          <view class="weui-form-preview__value_in-hd">¥{{wan_can_jia_ge}}.00</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+       <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">签到情况</view>
+          <view class="weui-form-preview__value">{{wan_can_qian_dao}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">订餐时间</view>
+          <view class="weui-form-preview__value">{{wan_can_ding_can_shi_jian}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">取消时间</view>
+          <view class="weui-form-preview__value">{{wan_can_qu_xiao_shi_jian}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+        <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="qu_xiao_wan_can">取消晚餐</button>
+      </view>
+    </view>
+  </view>
+</view>

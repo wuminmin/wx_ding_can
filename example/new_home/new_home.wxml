@@ -1,0 +1,47 @@
+<view class="weui-toptips weui-toptips_normal" wx:if="{{showTopTips_normal}}">{{showTopTips_normal_txt}}</view>
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips_fail}}">{{showTopTips_fail_txt}}</view>
+<modal hidden="{{hiddenmodalput}}" title="{{modal_tittle}}" confirm-text="提交" bindconfirm="confirm">
+  <view>
+    <input type='text' class='weui-cell' value="{{phone_input}}" bindinput="phone_input_bindinput" placeholder="请输入手机号" />
+  </view>
+  <view>
+    <input type='text' class='weui-cell' value="{{sms_code_input}}" bindinput="sms_code_input_bindinput" placeholder="请输入验证码" />
+  </view>
+  <view class="weui-cell__ft">
+    <button hidden="{{send_sms_code_hidden}}" class='weui-vcode-btn' bindtap="send_sms_code">获取验证码</button>
+  </view>
+</modal>
+<view class="page">
+
+  <view class="page__hd">
+    <view class="page__title">{{app_tittle}}</view>
+    <view class="page__desc">{{app_des}}</view>
+    <view class="page__desc">{{app_code_des}}</view>
+    <view class="page__desc">{{app_code}}</view>
+    <view class="page__title">{{page_name}}</view>
+    <view class="page__desc">{{page_desc}}</view>
+    <view class="page__desc red-color">{{shi_tang_di_zhi}}</view>
+    <view class="page__desc  red-color">{{ding_can_jie_guo}}</view>
+    <view class="button-sp-area">
+      <button class="weui-btn" type="primary" plain="true" bindtap="bindScanCode">扫码</button>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="kind-list">
+      <block wx:for="{{list}}" wx:key="id">
+        <view class="page__desc">{{item.name}}</view>
+        <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
+          <view class="kind-list__item">
+            <navigator url="../{{page.url}}/{{page.url}}?name={{item.name}}&page_name={{page.page_name}}&page_desc={{page.page_desc}}" class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">{{page.page_name}} {{page.page_desc}}</view>
+              <image class="kind-list__img" src="../images/icon_nav_{{page.url}}.png"></image>
+            </navigator>
+          </view>
+        </block>
+      </block>
+    </view>
+  </view>
+  <view class="page__ft">
+    <image src="../images/icon_footer.png" style="width: 84px; height: 19px;"></image>
+  </view>
+</view>

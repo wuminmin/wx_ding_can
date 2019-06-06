@@ -34,6 +34,7 @@
               <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
                     <view class="weui-cell">
                   <view class="weui-cell__bd">{{page.page_name}}</view>
+                   <view class="weui-cell__bd">{{page.shu_liang}}</view>
                   <view class="page__desc">{{page.page_desc}}</view>
                        </view>
               </block>

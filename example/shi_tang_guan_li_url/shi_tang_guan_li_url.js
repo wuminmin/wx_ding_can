@@ -12,58 +12,6 @@ Page({
     start_date: "",
     end_date: "",
     list: [],
-    // list: [{
-    //     id: '1',
-    //     name: '客户支撑中心',
-    //   num: '3',
-    //     open: false,
-    //     pages: [{
-    //         'page_name': '张卫国',
-    //         'page_desc':'没吃',
-    //       },
-    //       {
-    //         'page_name': '桂冠玉',
-    //         'page_desc': '吃过',
-    //       },
-    //       {
-    //         'page_name': '陈涛',
-    //         'page_desc': '吃过',
-    //       },
-    //     ]
-    //   },
-    //   {
-    //     id: '2',
-    //     name: '无线中心',
-    //     num: '1',
-    //     open: false,
-    //     pages: [
-    //       {
-    //       'page_name': '吴敏民',
-    //       'page_desc': '吃过',
-    //     },
-    //     ],
-    //   },
-    //   {
-    //     id: '3',
-    //     name: '政策宣传',
-    //     num: '0',
-    //     open: false,
-    //     pages: [{
-    //       'page_name': '功能开发中',
-    //       'page_desc': '敬请期待',
-    //     },],
-    //   },
-    //   {
-    //     id: '4',
-    //     name: '用户预约',
-    //     num: '0',
-    //     open: false,
-    //     pages: [       {
-    //       'page_name': '功能开发中',
-    //       'page_desc': '敬请期待',
-    //     },],
-    //   },
-    // ]
   },
   onLoad: function (options) {
     // Do something when page ready.

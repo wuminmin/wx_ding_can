@@ -51,7 +51,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: app.globalData.global_url + 'get_ding_can_data/',
+            url: app.globalData.global_url + 'get_ding_can_data2/',
             data: {
               code: res.code,
               date: that.data.date,
@@ -193,7 +193,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: app.globalData.global_url + 'get_ding_can_data/',
+            url: app.globalData.global_url + 'get_ding_can_data2/',
             data: {
               code: res.code,
               date: that.data.date,

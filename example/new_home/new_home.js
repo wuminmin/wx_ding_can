@@ -3,8 +3,8 @@ Page({
   data: {
     app_tittle: '订餐123',
     app_des: '订餐123是员工在食堂订餐的微信小程序。',
-    app_code_des: '您没有权限，请联系管理员',
-    app_code: '15305669706',
+    app_code_des: '正在登陆中，请耐心等待。。。',
+    app_code: '若无反应请稍后再试',
     list: [],
 
     name: '',

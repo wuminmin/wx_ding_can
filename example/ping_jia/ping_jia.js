@@ -40,6 +40,8 @@ Page({
           src: res.tempFilePaths[0],
           tu_pian_list: res.tempFilePaths
         });
+
+        
         console.log(that.data.src);
         console.log(that.data.tu_pian_list);
       }

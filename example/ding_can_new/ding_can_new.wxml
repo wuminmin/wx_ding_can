@@ -21,17 +21,20 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells__title">预定早餐食堂就餐</view>
+
+    <view wx:for="{{ding_can_list}}" wx:key="*this">
+    <view class="weui-cells__title">{{item.tittle}}</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__bd">
-          <picker bindchange="bindAccountChange0" value="{{countryIndex}}" range="{{countries}}">
-            <view class="weui-select">{{countries[countryIndex]}}</view>
+          <picker bindchange="bindInput_list" data-tittle="{{item.tittle}}" value="{{item.input_index}}" range="{{item.input_list}}">
+            <view class="weui-select">{{item.input_list[item.input_index]}}</view>
           </picker>
         </view>
       </view>
     </view>
-    <view class="weui-cells__title">预定中餐食堂就餐</view>
+    </view>
+    <!-- <view class="weui-cells__title">预定中餐食堂就餐</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__bd">
@@ -41,7 +44,7 @@
         </view>
       </view>
     </view>
- 
+
     <view class="weui-cells__title">预定晚餐食堂就餐</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
@@ -51,10 +54,10 @@
           </picker>
         </view>
       </view>
-    </view>
- 
- 
- 
+    </view> -->
+
+
+
     <!-- <view class="weui-cells__title">预定外带</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
@@ -73,10 +76,10 @@
           <input class="weui-input" bindinput='watch_wan_can' type='number' value='{{wan_can_wai_dai}}' />
         </view>
       </view>
- 
+
      
     </view> -->
- 
+
     <checkbox-group bindchange="bindAgreeChange">
       <label class="weui-agree" for="weuiAgree">
         <view class="weui-agree__text">
@@ -89,7 +92,7 @@
         </view>
       </label>
     </checkbox-group>
- 
+
     <view class="weui-btn-area">
       <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
     </view>

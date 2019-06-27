@@ -8,8 +8,8 @@ Page({
     showTopTips_fail_txt: '',
 
     name: '',
-    page_name: '',
-    page_desc: '',
+    page_name: '正在登录',
+    page_desc: '请稍后。。。。',
     shi_tang_di_zhi: '',
     ding_can_jie_guo: '',
 
@@ -18,25 +18,29 @@ Page({
     end_date: "",
     time: "12:01",
 
-    countryCodes: ["+86", "+80", "+84", "+87"],
-    countryCodeIndex: 0,
-
-    countries: ["无", "预定1份"],
-    countryIndex: 0,
-
-    accounts: ["无", "预定1份"],
-    zhong_can_shi_tang: 0,
-
-    accounts2: ["无", "预定1份"],
-    wan_can_shi_tang: 0,
-
-    zhong_can_wai_dai: 0,
-    wan_can_wai_dai: 0,
-
-
+    ding_can_list: [
+    ],
     isAgree: false
-
   },
+  bindInput_list: function (e) {
+    var that = this;
+    var main_list_tittle_tmp = e.currentTarget.dataset.tittle;
+    console.log(main_list_tittle_tmp);
+    var main_list_tmp = that.data.ding_can_list;
+    for (var i in main_list_tmp) {
+      if (main_list_tmp[i].tittle == main_list_tittle_tmp) {
+        console.log('匹配成功');
+        main_list_tmp[i].input_index = e.detail.value;
+        console.log(main_list_tmp[i].main_body_txt);
+        break; //Stop this loop, we found it!
+      }
+    }
+    that.setData({
+      ding_can_list: main_list_tmp
+    });
+    console.log(that.data.ding_can_list);
+  },
+
   onLoad: function (options) {
     var that = this;
     console.log(options.name)
@@ -58,6 +62,7 @@ Page({
             success: function (result) {
               if (result.data.描述 == "下载成功") {
                 that.setData({
+                  ding_can_list: result.data.ding_can_list,
                   name: result.data.主菜单name,
                   page_name: result.data.子菜单page_name,
                   page_desc: result.data.子菜单page_desc,
@@ -65,11 +70,24 @@ Page({
                   date: result.data.用餐日期,
                   start_date: result.data.预订开始日期,
                   end_date: result.data.预订结束日期,
-                  countries: result.data.countries,
-                  accounts: result.data.accounts,
-                  accounts2: result.data.accounts2,
+                  showTopTips_normal_txt: result.data.描述,
+                  showTopTips_normal: true,
                 });
+                setTimeout(function () {
+                  that.setData({
+                    showTopTips_normal: false
+                  });
+                }, 3000);
               } else {
+                that.setData({
+                  showTopTips_fail_txt: result.data.描述,
+                  showTopTips_fail: true,
+                });
+                setTimeout(function () {
+                  that.setData({
+                    showTopTips_fail: false
+                  });
+                }, 3000);
 
               }
               console.log('request success', result)
@@ -108,7 +126,7 @@ Page({
           if (res.code) {
             //发起网络请求
             wx.request({
-              url: app.globalData.global_url + 'send_ding_can_data/',
+              url: app.globalData.global_url + 'send_ding_can_data2/',
               data: {
                 code: res.code,
                 countryIndex: that.data.countryIndex,
@@ -120,6 +138,7 @@ Page({
                 page_name: that.data.page_name,
                 page_desc: that.data.page_desc,
                 date: that.data.date,
+                ding_can_list: that.data.ding_can_list,
               },
               success: function (result) {
                 if (result.data.描述 == "上传成功") {
@@ -163,60 +182,72 @@ Page({
       })
     }
   },
-
   bindDateChange: function (e) {
-    this.setData({
+    var that = this;
+    that.setData({
       date: e.detail.value
-    })
-  },
-  bindTimeChange: function (e) {
-    this.setData({
-      time: e.detail.value
-    })
-  },
-  watch_zhong_can: function (e) {
-    console.log('发生选择改变，携带值为', e.detail.value);
-    this.setData({
-      zhong_can_wai_dai: e.detail.value
-    })
-  },
-  watch_wan_can: function (e) {
-    console.log('发生选择改变，携带值为', e.detail.value);
-    this.setData({
-      wan_can_wai_dai: e.detail.value
-    })
-  },
-  bindCountryCodeChange: function (e) {
-    console.log('picker country code 发生选择改变，携带值为', e.detail.value);
+    });
 
-    this.setData({
-      countryCodeIndex: e.detail.value
-    })
-  },
-  bindAccountChange0: function (e) {
-    console.log('picker country 发生选择改变，携带值为', e.detail.value);
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: app.globalData.global_url + 'get_ding_can_data/',
+            data: {
+              code: res.code,
+              date: that.data.date,
+              name: that.data.name,
+              page_name: that.data.page_name,
+              page_desc: that.data.page_desc,
+            },
+            success: function (result) {
+              if (result.data.描述 == "下载成功") {
+                that.setData({
+                  ding_can_list: result.data.ding_can_list,
+                  showTopTips_normal_txt: result.data.描述,
+                  showTopTips_normal: true,
+                });
+                setTimeout(function () {
+                  that.setData({
+                    showTopTips_normal: false
+                  });
+                }, 3000);
+              } else {
+                that.setData({
+                  showTopTips_fail_txt: result.data.描述,
+                  showTopTips_fail: true,
+                });
+                setTimeout(function () {
+                  that.setData({
+                    showTopTips_fail: false
+                  });
+                }, 3000);
 
-    this.setData({
-      countryIndex: e.detail.value
-    })
-  },
-  bindAccountChange1: function (e) {
-    console.log('zhong_can_shi_tang 发生选择改变，携带值为', e.detail.value);
+              }
+              console.log('request success', result)
+            }
+          })
+        } else {
+          that.setData({
+            showTopTips_fail_txt: res.errMsg,
+            showTopTips_fail: true,
+          });
+          setTimeout(function () {
+            that.setData({
+              showTopTips_fail: false
+            });
+          }, 3000);
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
 
-    this.setData({
-      zhong_can_shi_tang: e.detail.value
-    })
-  },
-  bindAccountChange2: function (e) {
-    console.log('wan_can_shi_tang 发生选择改变，携带值为', e.detail.value);
 
-    this.setData({
-      wan_can_shi_tang: e.detail.value
-    })
   },
   bindAgreeChange: function (e) {
     this.setData({
       isAgree: !!e.detail.value.length
     });
-  }
+  },
 });

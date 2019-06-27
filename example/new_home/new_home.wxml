@@ -15,13 +15,13 @@
 
   <view class="page__hd">
     <view class="page__title">{{app_tittle}}</view>
-    <view class="page__desc">{{app_des}}</view>
+    <view class="page__desc red-color" >{{app_des}}</view>
     <view class="page__desc">{{app_code_des}}</view>
     <view class="page__desc">{{app_code}}</view>
     <view class="page__title">{{page_name}}</view>
     <view class="page__desc">{{page_desc}}</view>
-    <view class="page__desc red-color">{{shi_tang_di_zhi}}</view>
-    <view class="page__desc  red-color">{{ding_can_jie_guo}}</view>
+    <view class="page__desc green-color">{{shi_tang_di_zhi}}</view>
+    <view class="page__desc  green-color">{{ding_can_jie_guo}}</view>
     <view class="button-sp-area">
       <button class="weui-btn" type="primary" plain="true" bindtap="bindScanCode">扫码</button>
     </view>

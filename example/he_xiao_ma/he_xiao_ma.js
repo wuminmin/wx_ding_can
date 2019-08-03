@@ -28,7 +28,6 @@ Page({
         page_desc: that.data.page_desc,
       },
       success: function(result) {
-
         if (that.data.text === result.data.核销码) {
           that.setData({
             flag: false,
@@ -38,7 +37,6 @@ Page({
             flag: true,
           });
         }
-
         that.setData({
           text: result.data.核销码,
           xing_ming: result.data.姓名,
@@ -47,12 +45,9 @@ Page({
           san_ji_bu_men: result.data.三级部门,
           si_ji_bu_men: result.data.四级部门,
         });
-
-       
         console.log('request success', result.data)
       }
     });
-
     const innerAudioContext = wx.createInnerAudioContext()
     if(that.data.flag){
       innerAudioContext.autoplay = true
@@ -68,7 +63,7 @@ Page({
     }
 
     qrcode.makeCode(that.data.text)
-    var clearTimeout_id_value = setTimeout(this.countDown, 2000);
+    var clearTimeout_id_value = setTimeout(this.countDown, 1000);
     this.setData({
       clearTimeout_id: clearTimeout_id_value,
     });

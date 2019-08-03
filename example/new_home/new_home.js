@@ -181,6 +181,11 @@ Page({
                             that.setData({
                               showTopTips_fail_txt: result.data.描述,
                               showTopTips_fail: true,
+                              app_tittle: result.data.主页标题,
+                              app_des: result.data.主页描述,
+                              app_code_des: result.data.验证码标题,
+                              app_code: result.data.验证码描述,
+                              list: result.data.主界内容,
                             });
                             setTimeout(function () {
                               that.setData({

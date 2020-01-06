@@ -165,6 +165,7 @@ Page({
                         url: app.globalData.global_url + 'ding_can_get_home_data/',
                         data: {
                           code: res.code,
+                          name:'长江路食堂123'
                         },
                         success: function (result) {
                           if (result.data.描述 == "下载成功") {

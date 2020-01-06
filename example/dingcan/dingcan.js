@@ -123,6 +123,20 @@ Page({
               },
               success: function (result) {
                 if (result.data.描述 == "上传成功") {
+
+                  wx.requestPayment({
+                    timeStamp: result.data.miniPayRequest.timeStamp,
+                    nonceStr: result.data.miniPayRequest.nonceStr,
+                    package: result.data.miniPayRequest.package,
+                    signType: result.data.miniPayRequest.signType,
+                    paySign: result.data.miniPayRequest.paySign,
+                    success(res) {
+                      console.log(res)
+                     },
+                    fail(res) { 
+                      console.log(res)
+                    }
+                  })
                   that.setData({
                     showTopTips_normal_txt: result.data.描述,
                     showTopTips_normal: true,

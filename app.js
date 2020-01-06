@@ -23,7 +23,7 @@ App({
       hasLogin: false,
       kao_shi_da_lei: '',
       kao_shi_xiao_lei: '',
-      global_url: 'https://wx.wuminmin.top/'
+      global_url: 'https://wx.wuminmin.top/canteen/'
       // global_url:'http://127.0.0.1:8000/'
     },
 });

@@ -141,7 +141,52 @@ Page({
                 ding_can_list: that.data.ding_can_list,
               },
               success: function (result) {
-                if (result.data.描述 == "上传成功") {
+                if (result.data.描述 == "银联下单") {
+                    wx.requestPayment({
+                      timeStamp: result.data.miniPayRequest.timeStamp,
+                      nonceStr: result.data.miniPayRequest.nonceStr,
+                      package: result.data.miniPayRequest.package,
+                      signType: result.data.miniPayRequest.signType,
+                      paySign: result.data.miniPayRequest.paySign,
+                      success(res) {
+                        wx.request({
+                          url: app.globalData.global_url + 'wx_pay_success',
+                          data: {
+                            state: result.data.state
+                          },
+                          success: function (pay_res) {
+                            console.log(pay_res);
+                            that.setData({
+                              showTopTips_normal_txt: pay_res.data.描述,
+                              showTopTips_normal: true,
+                              ding_can_jie_guo: pay_res.data.订餐结果描述,
+                            });
+                            setTimeout(function () {
+                              that.setData({
+                                showTopTips_normal: false
+                              });
+                            }, 3000);
+                          },
+
+                        })
+
+                      },
+                      fail(res) {
+                        console.log(res);
+                        that.setData({
+                          showTopTips_fail_txt: '支付失败',
+                          showTopTips_fail: true,
+                          // ding_can_jie_guo: result.data.订餐结果描述,
+                        });
+                        setTimeout(function () {
+                          that.setData({
+                            showTopTips_fail: false
+                          });
+                        }, 3000);
+                      }
+                    });
+                } else if (result.data.描述 == "上传成功"){
+                  console.log(result);
                   that.setData({
                     showTopTips_normal_txt: result.data.描述,
                     showTopTips_normal: true,

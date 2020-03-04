@@ -58,7 +58,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: app.globalData.global_url + 'ding_can_sao_he_xiao_ma/',
+            url: app.globalData.global_url + 'ding_can_sao_he_xiao_ma2/',
             data: {
               code: res.code,
               er_wei_ma: that.data.er_wei_ma,
@@ -71,7 +71,7 @@ Page({
               if (result.data.描述 == '成功') {
                 that.setData({
                   shi_tang_di_zhi: result.data.描述,
-                  ding_can_jie_guo: result.data.姓名 + result.data.当前日期 + result.data.类型,
+                  ding_can_jie_guo: result.data.订餐结果,
                 });
               } else {
                 that.setData({
@@ -106,7 +106,7 @@ Page({
   //取消按钮
   cancel: function() {
     this.setData({
-      hiddenmodalput: true
+      hiddenmodalput: !this.data.hiddenmodalput
     });
   },
   //确认
@@ -127,7 +127,7 @@ Page({
             success: function(result) {
               if (result.data == "绑定成功") {
                 that.setData({
-                  hiddenmodalput: true
+                  hiddenmodalput: !that.data.hiddenmodalput
                 })
                 that.login_check()
               } else {
@@ -143,6 +143,9 @@ Page({
         }
       }
     })
+  },
+  zhu_ce:function(e){
+    this.login_check()
   },
   login_check: function(e) {
     var that = this
@@ -176,45 +179,48 @@ Page({
                               app_code: result.data.验证码描述,
                               list: result.data.主界内容,
                             });
-                          } else if (result.data.描述 == "未注册手机号") {
+                          } 
+                          else if (result.data.描述 == "未注册手机号") {
                             that.modalinput();
-                          } else {
+                          } 
+                          else {
                             that.setData({
-                              showTopTips_fail_txt: result.data.描述,
-                              showTopTips_fail: true,
-                              app_tittle: result.data.主页标题,
-                              app_des: result.data.主页描述,
-                              app_code_des: result.data.验证码标题,
-                              app_code: result.data.验证码描述,
-                              list: result.data.主界内容,
-                            });
-                            setTimeout(function () {
-                              that.setData({
-                                showTopTips_fail: false
-                              });
-                            }, 3000);
+                              app_des: "系统故障，请联系管理员"
+                            })
                           }
                           console.log('request success', result)
+                        },
+                        fail: function (e) {
+                          that.setData({
+                            app_des: "系统故障，请联系管理员"
+                          })
                         }
                       })
                     } else {
                       that.setData({
-                        showTopTips_fail_txt: res.errMsg,
-                        showTopTips_fail: true,
-                      });
-                      setTimeout(function () {
-                        that.setData({
-                          showTopTips_fail: false
-                        });
-                      }, 3000);
-                      console.log('登录失败！' + res.errMsg)
+                        app_des: "系统故障，请联系管理员"
+                      })
                     }
                   }
                 })
               } else {
-                that.modalinput()
+               that.setData({
+                 showTopTips_fail_txt: result.data.描述,
+                 showTopTips_fail: true,
+                 app_des: result.data.描述,
+               });
+               setTimeout(function () {
+                 that.setData({
+                   showTopTips_fail: false
+                 });
+               }, 3000);
               }
               console.log('request success', result)
+            },
+            fail:function(e){
+              that.setData({
+                app_des:'系统故障，请联系管理员',
+              })
             }
           })
         } else {
@@ -275,18 +281,11 @@ Page({
                   app_code: result.data.验证码描述,
                   list: result.data.主界内容,
                 });
-              } else if (result.data.描述 == "未注册手机号") {
-                that.modalinput();
-              } else {
+              }
+              else {
                 that.setData({
-                  showTopTips_fail_txt: result.data.描述,
-                  showTopTips_fail: true,
-                });
-                setTimeout(function() {
-                  that.setData({
-                    showTopTips_fail: false
-                  });
-                }, 3000);
+                  app_des: "系统故障，请联系管理员"
+                })
               }
               console.log('request success', result)
             }

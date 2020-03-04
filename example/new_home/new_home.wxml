@@ -1,6 +1,6 @@
 <view class="weui-toptips weui-toptips_normal" wx:if="{{showTopTips_normal}}">{{showTopTips_normal_txt}}</view>
 <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips_fail}}">{{showTopTips_fail_txt}}</view>
-<modal hidden="{{hiddenmodalput}}" title="{{modal_tittle}}" confirm-text="提交" bindconfirm="confirm">
+<modal hidden="{{hiddenmodalput}}" title="{{modal_tittle}}"  confirm-text="提交" bindconfirm="confirm" bindcancel="cancel" >
   <view>
     <input type='text' class='weui-cell' value="{{phone_input}}" bindinput="phone_input_bindinput" placeholder="请输入手机号" />
   </view>
@@ -24,6 +24,7 @@
     <view class="page__desc  green-color">{{ding_can_jie_guo}}</view>
     <view class="button-sp-area">
       <button class="weui-btn" type="primary" plain="true" bindtap="bindScanCode">扫码</button>
+       <button class="weui-btn" type="primary" plain="true" bindtap="zhu_ce">登陆</button>
     </view>
   </view>
   <view class="page__bd page__bd_spacing">

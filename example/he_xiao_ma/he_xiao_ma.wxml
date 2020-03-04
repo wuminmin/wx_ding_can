@@ -6,13 +6,70 @@
     <button bindtap='tapHandler'>转为二维码</button>
 </view> -->
 
- <view class="page__hd">
-    <view class="page__title">{{page_name}}</view>
-    <view class="page__desc red-color">{{page_desc}}</view>
-    <view class="page__desc">{{xing_ming}}</view>
-    <view class="page__desc">{{shou_ji_hao}}{{er_ji_bu_men}}{{san_ji_bu_men}}{{si_ji_bu_men}}</view>
+<modal hidden="{{hiddenmodalput}}" title="{{modal_tittle}}" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+<canvas class='canvas' canvas-id='canvas' bindlongtap='save'></canvas>
+</modal>
+<view class="weui-toptips weui-toptips_normal" wx:if="{{showTopTips_normal}}">{{showTopTips_normal_txt}}</view>
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips_fail}}">{{showTopTips_fail_txt}}</view>
+
+<view class="page__hd">
+  <view class="page__title">{{page_name}}</view>
+  <view class="page__desc red-color">{{page_desc}}</view>
+  <view class="page__desc">{{xing_ming}}</view>
+  <view class="page__desc">{{shou_ji_hao}}{{er_ji_bu_men}}{{san_ji_bu_men}}{{si_ji_bu_men}}</view>
+</view>
+
+<view class="page__bd">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date}}" start="{{start_date}}" end="{{end_date}}" bindchange="bindDateChange">
+          <view class="weui-input">{{date}}</view>
+        </picker>
+      </view>
+    </view>
   </view>
 
+</view>
 
-<canvas class='canvas' canvas-id='canvas' bindlongtap='save'></canvas>
+
+
+<block wx:for="{{ding_can_res_list}}" wx:key="*this">
+  <view class="page__bd">
+
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">名称</view>
+          <view class="weui-form-preview__value_in-hd">{{item.name}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">价格</view>
+          <view class="weui-form-preview__value_in-hd">¥{{item.price/100}}.00</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">签到情况</view>
+          <view class="weui-form-preview__value">{{item.mark}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">订餐时间</view>
+          <view class="weui-form-preview__value">{{item.ordertime}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+        <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" 
+        data-name="{{item.name}}" 
+        data-oid="{{item.oid}}"
+        bindtap="show_code">出示核销码</button>
+      </view>
+    </view>
+  </view>
+</block>
 <!-- <view class='tip'>长按保存</view> -->

@@ -189,46 +189,58 @@ Page({
   },
 
   show_code: function(e) {
-    this.setData({
-      hiddenmodalput: false,
-      modal_tittle: e.target.dataset.name
-    });
-    console.log(e.target.dataset.name);
     var that = this;
-    wx.login({
-      success(res) {
-        if (res.code) {
-          //发起网络请求
-          var text = JSON.stringify({
-            name: e.target.dataset.name,
-            oid: e.target.dataset.oid,
-            code: res.code,
-            date: that.data.date
-          })
-          qrcode = new QRCode('canvas', {
-            text: text,
-            image: '/example/images/icon_nav_dingcan.png',
-            width: 150,
-            height: 150,
-            colorDark: "#1CA4FC",
-            colorLight: "white",
-            correctLevel: QRCode.CorrectLevel.H,
-          });
-        } else {
-          that.setData({
-            showTopTips_fail_txt: res.errMsg,
-            showTopTips_fail: true,
-          });
-          setTimeout(function() {
-            that.setData({
-              showTopTips_fail: false
+    console.log(e.target.dataset.number);
+    if (e.target.dataset.number==0){
+      that.setData({
+        showTopTips_normal_txt: '数量为0，不可核销',
+        showTopTips_normal: true,
+      });
+      setTimeout(function () {
+        that.setData({
+          showTopTips_normal: false
+        });
+      }, 3000);
+    }else{
+      that.setData({
+        hiddenmodalput: false,
+        modal_tittle: e.target.dataset.name
+      });
+      console.log(e.target.dataset.name);
+      wx.login({
+        success(res) {
+          if (res.code) {
+            //发起网络请求
+            var text = JSON.stringify({
+              name: e.target.dataset.name,
+              oid: e.target.dataset.oid,
+              code: res.code,
+              date: that.data.date
+            })
+            qrcode = new QRCode('canvas', {
+              text: text,
+              image: '/example/images/icon_nav_dingcan.png',
+              width: 150,
+              height: 150,
+              colorDark: "#1CA4FC",
+              colorLight: "white",
+              correctLevel: QRCode.CorrectLevel.H,
             });
-          }, 3000);
-          console.log('登录失败！' + res.errMsg)
+          } else {
+            that.setData({
+              showTopTips_fail_txt: res.errMsg,
+              showTopTips_fail: true,
+            });
+            setTimeout(function () {
+              that.setData({
+                showTopTips_fail: false
+              });
+            }, 3000);
+            console.log('登录失败！' + res.errMsg)
+          }
         }
-      }
-    })
-
+      })
+    }
   },
 
   tapHandler: function() {

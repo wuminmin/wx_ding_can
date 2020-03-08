@@ -53,6 +53,12 @@
           <view class="weui-form-preview__value_in-hd">¥{{item.price/100}}.00</view>
         </view>
       </view>
+        <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">数量</view>
+          <view class="weui-form-preview__value_in-hd">{{item.number}}</view>
+        </view>
+      </view>
       <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">签到情况</view>
@@ -67,6 +73,7 @@
         <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" 
         data-name="{{item.name}}" 
         data-oid="{{item.oid}}"
+        data-number="{{item.number}}"
         bindtap="show_code">出示核销码</button>
       </view>
     </view>

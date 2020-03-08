@@ -214,8 +214,10 @@ Page({
                    showTopTips_fail: false
                  });
                }, 3000);
+               that.modalinput();
               }
-              console.log('request success', result)
+              console.log('request success', result);
+              
             },
             fail:function(e){
               that.setData({

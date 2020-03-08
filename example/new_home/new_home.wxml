@@ -23,7 +23,7 @@
     <view class="page__desc green-color">{{shi_tang_di_zhi}}</view>
     <view class="page__desc  green-color">{{ding_can_jie_guo}}</view>
     <view class="button-sp-area">
-      <button class="weui-btn" type="primary" plain="true" bindtap="bindScanCode">扫码</button>
+      <!-- <button class="weui-btn" type="primary" plain="true" bindtap="bindScanCode">扫码</button> -->
        <button class="weui-btn" type="primary" plain="true" bindtap="zhu_ce">登陆</button>
     </view>
   </view>

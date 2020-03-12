@@ -53,6 +53,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'get_ding_can_data2/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               date: that.data.date,
               name: options.name,
@@ -128,6 +129,7 @@ Page({
             wx.request({
               url: app.globalData.global_url + 'send_ding_can_data2/',
               data: {
+                app_id: app.globalData.app_id,
                 code: res.code,
                 countryIndex: that.data.countryIndex,
                 zhong_can_shi_tang: that.data.zhong_can_shi_tang,
@@ -152,6 +154,7 @@ Page({
                         wx.request({
                           url: app.globalData.global_url + 'wx_pay_success',
                           data: {
+                            app_id: app.globalData.app_id,
                             state: result.data.state
                           },
                           success: function (pay_res) {
@@ -240,6 +243,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'get_ding_can_data2/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               date: that.data.date,
               name: that.data.name,

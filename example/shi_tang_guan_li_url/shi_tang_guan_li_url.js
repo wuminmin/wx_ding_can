@@ -31,6 +31,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_tong_ji_zhong_can/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               date:that.data.date,
               name: options.name,
@@ -80,6 +81,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_tong_ji_zhong_can/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               date: that.data.date,
               name: that.data.name,

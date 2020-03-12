@@ -20,6 +20,7 @@ App({
         console.log('App Hide')
     },
     globalData: {
+      app_id:'wx10547371f9547456',
       hasLogin: false,
       kao_shi_da_lei: '',
       kao_shi_xiao_lei: '',

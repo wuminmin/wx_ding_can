@@ -47,6 +47,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'get_ding_dan',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               date: e.detail.value,
               name: that.data.name,
@@ -126,6 +127,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'get_ding_dan',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               date: that.data.date,
               name: options.name,

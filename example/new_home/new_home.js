@@ -1,10 +1,10 @@
 var app = getApp()
 Page({
   data: {
-    app_tittle: '订餐123',
-    app_des: '订餐123是员工在食堂订餐的微信小程序。',
-    app_code_des: '正在登陆中，请耐心等待。。。',
-    app_code: '若无反应请稍后再试',
+    app_tittle: '食堂订餐',
+    app_des: '若点击登陆无反应请稍后再试。',
+    app_code_des: '本小程序是专为员工提供食堂订餐服务的小程序，请先与您的管理员联系，在后台添加权限后再点击登陆按钮。通过手机号验证后才可以使用订餐服务。非本公司员工无权限使用本小程序。',
+    app_code: '若您不是本小程序的客户，请不要点击登陆按钮。',
     list: [],
 
     name: '',
@@ -60,6 +60,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_sao_he_xiao_ma2/',
             data: {
+              app_id:app.globalData.app_id,
               code: res.code,
               er_wei_ma: that.data.er_wei_ma,
               name: that.data.name,
@@ -120,6 +121,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_check_sms_code/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               phone: that.data.phone_input,
               sms_code: that.data.sms_code_input
@@ -156,6 +158,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_login_check/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code
             },
             success: function(result) {
@@ -167,6 +170,7 @@ Page({
                       wx.request({
                         url: app.globalData.global_url + 'ding_can_get_home_data/',
                         data: {
+                          app_id: app.globalData.app_id,
                           code: res.code,
                           name:'长江路食堂123'
                         },
@@ -185,7 +189,7 @@ Page({
                           } 
                           else {
                             that.setData({
-                              app_des: "系统故障，请联系管理员"
+                              app_des: result.data.描述
                             })
                           }
                           console.log('request success', result)
@@ -237,6 +241,7 @@ Page({
     wx.request({
       url: app.globalData.global_url + 'ding_can_send_sms_code/',
       data: {
+        app_id: app.globalData.app_id,
         phone: that.data.phone_input
       },
       success: function(result) {
@@ -264,48 +269,50 @@ Page({
   },
   onLoad: function(options) {
     // Do something when page ready.
-    var that = this;
-    wx.login({
-      success(res) {
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: app.globalData.global_url + 'ding_can_get_home_data/',
-            data: {
-              code: res.code,
-            },
-            success: function(result) {
-              if (result.data.描述 == "下载成功") {
-                that.setData({
-                  app_tittle: result.data.主页标题,
-                  app_des: result.data.主页描述,
-                  app_code_des: result.data.验证码标题,
-                  app_code: result.data.验证码描述,
-                  list: result.data.主界内容,
-                });
-              }
-              else {
-                that.setData({
-                  app_des: "系统故障，请联系管理员"
-                })
-              }
-              console.log('request success', result)
-            }
-          })
-        } else {
-          that.setData({
-            showTopTips_fail_txt: res.errMsg,
-            showTopTips_fail: true,
-          });
-          setTimeout(function() {
-            that.setData({
-              showTopTips_fail: false
-            });
-          }, 3000);
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
+    // var that = this;
+    // var a = wx.getAccountInfoSync();
+    // console.log(a);
+    // wx.login({
+    //   success(res) {
+    //     if (res.code) {
+    //       //发起网络请求
+    //       wx.request({
+    //         url: app.globalData.global_url + 'ding_can_get_home_data/',
+    //         data: {
+    //           code: res.code,
+    //         },
+    //         success: function(result) {
+    //           if (result.data.描述 == "下载成功") {
+    //             that.setData({
+    //               app_tittle: result.data.主页标题,
+    //               app_des: result.data.主页描述,
+    //               app_code_des: result.data.验证码标题,
+    //               app_code: result.data.验证码描述,
+    //               list: result.data.主界内容,
+    //             });
+    //           }
+    //           else {
+    //             that.setData({
+    //               app_des: result.data.描述
+    //             })
+    //           }
+    //           console.log('request success', result)
+    //         }
+    //       })
+    //     } else {
+    //       that.setData({
+    //         showTopTips_fail_txt: res.errMsg,
+    //         showTopTips_fail: true,
+    //       });
+    //       setTimeout(function() {
+    //         that.setData({
+    //           showTopTips_fail: false
+    //         });
+    //       }, 3000);
+    //       console.log('登录失败！' + res.errMsg)
+    //     }
+    //   }
+    // })
   },
   kindToggle: function(e) {
     var id = e.currentTarget.id,

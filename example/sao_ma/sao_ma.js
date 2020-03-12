@@ -60,6 +60,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_sao_he_xiao_ma2/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               er_wei_ma: that.data.er_wei_ma,
               name: that.data.name,
@@ -120,6 +121,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_check_sms_code/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
               phone: that.data.phone_input,
               sms_code: that.data.sms_code_input
@@ -156,6 +158,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_login_check/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code
             },
             success: function (result) {
@@ -167,6 +170,7 @@ Page({
                       wx.request({
                         url: app.globalData.global_url + 'ding_can_get_home_data/',
                         data: {
+                          app_id: app.globalData.app_id,
                           code: res.code,
                           name: '长江路食堂123'
                         },
@@ -237,6 +241,7 @@ Page({
     wx.request({
       url: app.globalData.global_url + 'ding_can_send_sms_code/',
       data: {
+        app_id: app.globalData.app_id,
         phone: that.data.phone_input
       },
       success: function (result) {
@@ -272,6 +277,7 @@ Page({
           wx.request({
             url: app.globalData.global_url + 'ding_can_get_home_data/',
             data: {
+              app_id: app.globalData.app_id,
               code: res.code,
             },
             success: function (result) {

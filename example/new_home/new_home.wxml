@@ -16,8 +16,8 @@
   <view class="page__hd">
     <view class="page__title">{{app_tittle}}</view>
     <view class="page__desc red-color" >{{app_des}}</view>
-    <view class="page__desc">{{app_code_des}}</view>
-    <view class="page__desc">{{app_code}}</view>
+    <view class="page__desc red-color">{{app_code_des}}</view>
+    <view class="page__desc red-color">{{app_code}}</view>
     <view class="page__title">{{page_name}}</view>
     <view class="page__desc">{{page_desc}}</view>
     <view class="page__desc green-color">{{shi_tang_di_zhi}}</view>

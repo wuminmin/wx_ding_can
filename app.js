@@ -20,11 +20,13 @@ App({
         console.log('App Hide')
     },
     globalData: {
-      app_id:'wx10547371f9547456',
+      // app_id:'wx10547371f9547456',//池州铁塔小程序
+      app_id:'wx32c0a3c1a3bfa81d',//池州通服小程序
       hasLogin: false,
       kao_shi_da_lei: '',
       kao_shi_xiao_lei: '',
-      global_url: 'https://wx.wuminmin.top/canteen/'
+      // global_url: 'https://wx.wuminmin.top/canteen/'
+      global_url: 'https://tieta.wuminmin.top/canteen/'
       // global_url:'http://127.0.0.1:8000/'
     },
 });

@@ -70,6 +70,7 @@ Page({
                 that.setData({
                   showTopTips_fail_txt: result.data.描述,
                   showTopTips_fail: true,
+                  ding_can_res_list:[],
                 });
                 setTimeout(function() {
                   that.setData({
@@ -84,6 +85,7 @@ Page({
           that.setData({
             showTopTips_fail_txt: res.errMsg,
             showTopTips_fail: true,
+            ding_can_res_list: [],
           });
           setTimeout(function() {
             that.setData({

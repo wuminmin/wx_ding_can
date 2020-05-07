@@ -143,6 +143,7 @@ Page({
                 ding_can_list: that.data.ding_can_list,
               },
               success: function (result) {
+                console.log(result)
                 if (result.data.描述 == "银联下单") {
                     wx.requestPayment({
                       timeStamp: result.data.miniPayRequest.timeStamp,

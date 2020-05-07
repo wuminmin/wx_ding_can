@@ -216,20 +216,37 @@ Page({
           if (res.code) {
             //发起网络请求
             var text = JSON.stringify({
+              key:'预定码',
               name: e.target.dataset.name,
               oid: e.target.dataset.oid,
               code: res.code,
               date: that.data.date
             })
-            qrcode = new QRCode('canvas', {
-              text: text,
-              image: '/example/images/icon_nav_dingcan.png',
-              width: 150,
-              height: 150,
-              colorDark: "#1CA4FC",
-              colorLight: "white",
-              correctLevel: QRCode.CorrectLevel.H,
-            });
+            console.log(text,'text-----------');
+            wx.request({
+              url:  app.globalData.global_url + 'ti_xing_fa_huo',
+              data: {
+                app_id: app.globalData.app_id,
+                code: res.code,
+                date: that.data.date,
+                name: options.name,
+                page_name: options.page_name,
+                page_desc: options.page_desc,
+              },
+              success: function (result) {
+                console.log(result)
+              }
+            })
+            
+            // qrcode = new QRCode('canvas', {
+            //   text: text,
+            //   image: '/example/images/icon_nav_dingcan.png',
+            //   width: 150,
+            //   height: 150,
+            //   colorDark: "#1CA4FC",
+            //   colorLight: "white",
+            //   correctLevel: QRCode.CorrectLevel.H,
+            // });
           } else {
             that.setData({
               showTopTips_fail_txt: res.errMsg,

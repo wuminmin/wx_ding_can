@@ -206,11 +206,11 @@ Page({
         });
       }, 3000);
     }else{
-      that.setData({
-        hiddenmodalput: false,
-        modal_tittle: e.target.dataset.name
-      });
-      console.log(e.target.dataset.name);
+      // that.setData({
+      //   hiddenmodalput: false,
+      //   modal_tittle: e.target.dataset.name
+      // });
+      // console.log(e.target.dataset.name);
       wx.login({
         success(res) {
           if (res.code) {
@@ -226,27 +226,40 @@ Page({
             wx.request({
               url:  app.globalData.global_url + 'ti_xing_fa_huo',
               data: {
-                app_id: app.globalData.app_id,
-                code: res.code,
-                date: that.data.date,
-                name: options.name,
-                page_name: options.page_name,
-                page_desc: options.page_desc,
+                  data:{
+                    app_id: app.globalData.app_id,
+                    key: '预定码',
+                    name: e.target.dataset.name,
+                    oid: e.target.dataset.oid,
+                    code: res.code,
+                    date: that.data.date
+                  }
               },
               success: function (result) {
                 console.log(result)
+                if (result.data.code == 1){
+                  that.setData({
+                    showTopTips_normal_txt: result.data.msg,
+                    showTopTips_normal: true,
+                  });
+                  setTimeout(function () {
+                    that.setData({
+                      showTopTips_normal: false
+                    });
+                  }, 3000);
+                }else{
+                  that.setData({
+                    showTopTips_fail_txt: result.data.msg,
+                    showTopTips_fail: true,
+                  });
+                  setTimeout(function () {
+                    that.setData({
+                      showTopTips_fail: false
+                    });
+                  }, 3000);
+                }
               }
             })
-            
-            // qrcode = new QRCode('canvas', {
-            //   text: text,
-            //   image: '/example/images/icon_nav_dingcan.png',
-            //   width: 150,
-            //   height: 150,
-            //   colorDark: "#1CA4FC",
-            //   colorLight: "white",
-            //   correctLevel: QRCode.CorrectLevel.H,
-            // });
           } else {
             that.setData({
               showTopTips_fail_txt: res.errMsg,

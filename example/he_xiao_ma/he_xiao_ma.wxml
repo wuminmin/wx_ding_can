@@ -50,7 +50,7 @@
       <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">价格</view>
-          <view class="weui-form-preview__value_in-hd">¥{{item.price/100}}.00</view>
+          <view class="weui-form-preview__value_in-hd">¥{{item.price/100}}</view>
         </view>
       </view>
         <view class="weui-form-preview__hd">
@@ -74,7 +74,7 @@
         data-name="{{item.name}}" 
         data-oid="{{item.oid}}"
         data-number="{{item.number}}"
-        bindtap="show_code">出示核销码</button>
+        bindtap="show_code">提醒发货</button>
       </view>
     </view>
   </view>
